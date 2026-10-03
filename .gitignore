@@ -1,0 +1,15 @@
+# Pesos de los modelos: se comparten por Google Drive / Kaggle (ver README)
+models/*
+!models/.gitkeep
+
+# Salidas temporales del entrenamiento de M3
+runs_m3/
+salida_M3.zip
+
+# Python y Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
