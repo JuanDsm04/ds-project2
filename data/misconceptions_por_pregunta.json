@@ -1,0 +1,71 @@
+{
+  "31772": [
+    "Incomplete",
+    "WNB"
+  ],
+  "31774": [
+    "FlipChange",
+    "Mult",
+    "SwapDividend"
+  ],
+  "31777": [
+    "Incomplete",
+    "Irrelevant",
+    "Wrong_fraction"
+  ],
+  "31778": [
+    "Additive",
+    "Irrelevant",
+    "WNB"
+  ],
+  "32829": [
+    "Adding_terms",
+    "Inverse_operation",
+    "Not_variable"
+  ],
+  "32833": [
+    "Duplication",
+    "Inversion",
+    "Wrong_Operation"
+  ],
+  "32835": [
+    "Ignores_zeroes",
+    "Longer_is_bigger",
+    "Shorter_is_bigger",
+    "Whole_numbers_larger"
+  ],
+  "33471": [
+    "Incomplete",
+    "Wrong_fraction"
+  ],
+  "33472": [
+    "Adding_across",
+    "Denominator-only_change",
+    "Incorrect_equivalent_fraction_addition"
+  ],
+  "33474": [
+    "Division",
+    "Subtraction"
+  ],
+  "76870": [
+    "Definition",
+    "Interior",
+    "Unknowable"
+  ],
+  "89443": [
+    "Positive",
+    "Tacking"
+  ],
+  "91695": [
+    "Firstterm",
+    "Wrong_term"
+  ],
+  "104665": [
+    "Base_rate",
+    "Multiplying_by_4"
+  ],
+  "109465": [
+    "Certainty",
+    "Scale"
+  ]
+}
