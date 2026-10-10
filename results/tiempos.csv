@@ -1,0 +1,2 @@
+modelo,tiempo_entrenamiento_s,tiempo_inferencia_test_s,hardware
+M1_tfidf_lr,99.81,1.54,CPU (x86_64)
