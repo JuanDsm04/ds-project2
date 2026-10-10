@@ -8,8 +8,8 @@ matplotlib>=3.8
 seaborn>=0.13
 
 # --- Modelos de lenguaje (M3) ---
-torch>=2.2
-transformers>=4.44
+torch>=2.5
+transformers>=5.0   # M3 se entrenó con transformers 5.x (requiere Python 3.10 o superior)
 sentencepiece>=0.2
 protobuf>=4.25
 accelerate>=0.30
@@ -18,4 +18,4 @@ accelerate>=0.30
 jupyter
 ipykernel
 
-# Agregar aquí bibliotecas (lightgbm, sentence-transformers, streamlit, plotly...)
+# Persona 2 y Persona 3 agregan aquí sus bibliotecas (lightgbm, sentence-transformers, streamlit, plotly...)

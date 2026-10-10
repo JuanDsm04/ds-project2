@@ -34,7 +34,9 @@ DIR_M3 = DIR_MODELOS / "m3_deberta"
 COLUMNAS_M1 = ["explicacion_m1", "pregunta_str", "pregunta_respuesta", "correcta_str"]
 
 
+# ---------------------------------------------------------------------------
 # Adaptadores de cada modelo
+# ---------------------------------------------------------------------------
 class ModeloM1:
     """M1: TF-IDF + regresión logística (scikit-learn)."""
 
@@ -100,7 +102,9 @@ _cache_modelos: dict[str, object] = {}
 _cache_reglas: dict[str, object] = {}
 
 
+# ---------------------------------------------------------------------------
 # Carga
+# ---------------------------------------------------------------------------
 def _nombre_real(modelo: str) -> str:
     nombre = ALIAS.get(modelo, modelo)
     if nombre not in _REGISTRO:
@@ -133,7 +137,9 @@ def _reglas():
     return _cache_reglas
 
 
+# ---------------------------------------------------------------------------
 # Predicción
+# ---------------------------------------------------------------------------
 def probabilidades(modelo: str, df: pd.DataFrame, usar_mascara: bool | None = None) -> tuple[np.ndarray, np.ndarray, pd.DataFrame]:
     """Probabilidades por clase (filas × clases) ya con la máscara aplicada.
 

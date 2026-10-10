@@ -22,7 +22,8 @@ pip install -r requirements.txt
 | `01-eda-exploratorio.ipynb` | Análisis exploratorio | Local |
 | `02-particion-y-preprocesamiento.ipynb` | Partición train/val/test y reglas derivadas | Local |
 | `03-modelo-M1-tfidf.ipynb` | M1: TF-IDF + regresión logística | Local (CPU, ~15 min) |
-| `04-modelo-M3-deberta.ipynb` | M3: DeBERTa-v3 con ajuste fino | **Kaggle con GPU** (~1 h) |
+| `04-modelo-M3-deberta.ipynb` | M3: DeBERTa-v3 con ajuste fino | **Kaggle con GPU** (~1.5 h) |
+| `04b-predicciones-M3-cpu.ipynb` | Predicciones de M3 sobre el conjunto de prueba | Local (CPU, ~20 min) |
 
 ## Pesos de los modelos
 
@@ -43,6 +44,7 @@ Enlace de descarga: **_pendiente (Google Drive)_**
 3. Panel derecho: **Accelerator → GPU T4 x2** e **Internet → On** (requiere cuenta verificada con teléfono).
 4. *Run All*. Para probar primero, poner `PRUEBA_RAPIDA = True` en la celda de configuración.
 5. Descargar `salida_M3.zip` de la pestaña *Output* y descomprimirlo en la raíz del repositorio.
+6. Correr `04b-predicciones-M3-cpu.ipynb` localmente para generar las predicciones sobre el conjunto de prueba (las que se generan dentro de Kaggle con GPU salieron degeneradas).
 
 ## Predecir desde código (o desde la app)
 
