@@ -18,8 +18,11 @@ accelerate>=0.30
 lightgbm>=4.5
 sentence-transformers>=3.0
 
+# --- Aplicación ---
+streamlit>=1.50
+plotly>=5.24
+
 # --- Notebooks ---
 jupyter
 ipykernel
 
-# Persona 2 y Persona 3 agregan aquí sus bibliotecas (lightgbm, sentence-transformers, streamlit, plotly...)
