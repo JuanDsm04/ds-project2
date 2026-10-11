@@ -1,3 +1,5 @@
 modelo,tiempo_entrenamiento_s,tiempo_inferencia_test_s,hardware
 M1_tfidf_lr,99.81,1.54,CPU (x86_64)
 M3_deberta,1665.7,809.53,GPU Tesla T4 (entrenamiento) / CPU (inferencia)
+M2_sbert_lgbm,229.22,56.05,CPU (x86_64)
+linea_base,0.09,0.1,CPU

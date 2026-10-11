@@ -8,7 +8,7 @@ construcción de la entrada y la máscara de etiquetas ocurren aquí dentro.
 Uso rápido::
 
     from src.prediccion import predecir, modelos_disponibles
-    modelos_disponibles()                      # ['M1_tfidf_lr', 'M3_deberta']
+    modelos_disponibles()                      # ['M1_tfidf_lr', 'M2_sbert_lgbm', 'M3_deberta']
     predecir("M1_tfidf_lr", 31772, r"\\( \\frac{3}{6} \\)", "3 out of 6 are white")
 
 Para agregar un modelo nuevo (por ejemplo M2, Persona 2):
@@ -29,6 +29,7 @@ from .metricas import top_k
 from .preprocesamiento import DIR_MODELOS, cargar_reglas, mascara_etiquetas, preparar_dataframe
 
 RUTA_M1 = DIR_MODELOS / "m1_tfidf_lr.joblib"
+DIR_M2 = DIR_MODELOS / "m2_sbert_lgbm"
 DIR_M3 = DIR_MODELOS / "m3_deberta"
 
 COLUMNAS_M1 = ["explicacion_m1", "pregunta_str", "pregunta_respuesta", "correcta_str"]
@@ -52,6 +53,34 @@ class ModeloM1:
 
     def predict_proba(self, df: pd.DataFrame) -> np.ndarray:
         return self.pipeline.predict_proba(df[COLUMNAS_M1])
+
+
+class ModeloM2:
+    """M2: embeddings Sentence-BERT + variables tabulares con LightGBM."""
+
+    nombre = "M2_sbert_lgbm"
+    ruta = DIR_M2 / "config_proyecto.json"
+
+    def __init__(self) -> None:
+        from sentence_transformers import SentenceTransformer
+
+        with open(self.ruta, encoding="utf-8") as f:
+            cfg = json.load(f)
+        self.modelo = joblib.load(DIR_M2 / "lgbm.joblib")
+        self.clases = np.asarray(self.modelo.classes_)
+        self.usar_mascara = bool(cfg.get("usar_mascara", True))
+        self.texto = cfg["texto"]
+        self.codigos = cfg["codigos"]
+        self.info = cfg
+        self.encoder = SentenceTransformer(str(DIR_M2 / "encoder"), device="cpu")
+
+    def predict_proba(self, df: pd.DataFrame, batch_size: int = 64) -> np.ndarray:
+        from .features_m2 import construir_matriz, textos_para_embedding, variables_tabulares
+
+        emb = self.encoder.encode(
+            textos_para_embedding(df, self.texto), batch_size=batch_size, normalize_embeddings=True
+        )
+        return self.modelo.predict_proba(construir_matriz(emb, variables_tabulares(df, self.codigos)))
 
 
 class ModeloM3:
@@ -94,6 +123,7 @@ class ModeloM3:
 
 _REGISTRO = {
     ModeloM1.nombre: ModeloM1,
+    ModeloM2.nombre: ModeloM2,
     ModeloM3.nombre: ModeloM3,
 }
 ALIAS = {"M1": "M1_tfidf_lr", "M2": "M2_sbert_lgbm", "M3": "M3_deberta"}
