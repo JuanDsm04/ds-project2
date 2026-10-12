@@ -1,6 +1,7 @@
 """Carga de datos, modelos y estilo compartidos por las páginas de la app."""
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -112,6 +113,13 @@ def cargar_metricas() -> dict[str, pd.DataFrame]:
         ruta.stem.removeprefix("metricas_"): pd.read_csv(ruta, keep_default_na=False)
         for ruta in sorted(DIR_METRICAS.glob("*.csv"))
     }
+
+
+@st.cache_data(show_spinner=False)
+def cargar_descripciones() -> dict[str, str]:
+    """Frase en español que explica cada idea errónea."""
+    with open(Path(__file__).parent / "descripciones.json", encoding="utf-8") as f:
+        return json.load(f)
 
 
 def modelos_disponibles() -> list[str]:

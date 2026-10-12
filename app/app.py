@@ -8,6 +8,7 @@ st.set_page_config(page_title="Ideas erróneas en matemáticas", page_icon=":mat
 paginas = [
     st.Page("paginas/inicio.py", title="Inicio", icon=":material/home:", default=True),
     st.Page("paginas/explorar.py", title="Explorar datos", icon=":material/bar_chart:"),
+    st.Page("paginas/clasificar.py", title="Clasificar", icon=":material/edit_note:"),
 ]
 
 st.navigation(paginas).run()
