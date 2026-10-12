@@ -9,6 +9,7 @@ paginas = [
     st.Page("paginas/inicio.py", title="Inicio", icon=":material/home:", default=True),
     st.Page("paginas/explorar.py", title="Explorar datos", icon=":material/bar_chart:"),
     st.Page("paginas/clasificar.py", title="Clasificar", icon=":material/edit_note:"),
+    st.Page("paginas/rendimiento.py", title="Rendimiento de modelos", icon=":material/monitoring:"),
 ]
 
 st.navigation(paginas).run()
